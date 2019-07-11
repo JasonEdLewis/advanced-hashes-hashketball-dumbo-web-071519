@@ -294,7 +294,21 @@ end
   winner = home_team[-1] > away_team[-1] ? home_team[0] : away_team[0]
   p winner
 end
-winning_team
+
+def player_with_longest_name
+  all_players_names = []
+    game_hash.each_key do |key|
+          i = 0
+        while i < game_hash[key][:players].length
+          all_players_names << game_hash[key][:players][i][:player_name]
+          i += 1
+        end
+    end
+      
+    all_players_names.sort_by{|word| word.length}[-1]
+end
+
+player_with_longest_name
 
 
 
