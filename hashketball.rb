@@ -267,6 +267,34 @@ def big_shoe_rebounds
         ballers[points_of_ballers.index(most_points)]
           
  end
+ 
+ def winning_team
+  i = 0
+  j = 0 
+  home_team = [game_hash[:home][:team_name]]
+  away_team = [game_hash[:away][:team_name]]
+  home_total_points = 0
+  away_total_points = 0
+  home_team_players = game_hash[game_hash.keys[0]][:players]
+  away_team_players = game_hash[game_hash.keys[1]][:players]
+
+while i < home_team_players.length
+    home_total_points += home_team_players[i][:points]
+    
+    i += 1
+end
+  home_team.push(home_total_points)
+  
+while j < away_team_players.length
+    away_total_points += away_team_players[j][:points]
+
+  j += 1
+end
+  away_team.push(away_total_points)
+  winner = home_team[-1] > away_team[-1] ? home_team[0] : away_team[0]
+  p winner
+end
+winning_team
 
 
 
