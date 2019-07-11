@@ -305,10 +305,33 @@ def player_with_longest_name
         end
     end
       
-    all_players_names.sort_by{|word| word.length}[-1]
+   return all_players_names.sort_by{|word| word.length}[-1]
 end
 
-player_with_longest_name
+def long_name_steals_a_ton?
+  thieves = []
+  steals = []
+  game_hash.each_key do |key|
+
+      i = 0
+      home_and_away_teams = game_hash[key]
+      players = home_and_away_teams[:players]
+      
+      while i < players.length
+       thieves << players[i][:player_name]
+
+      steals << players[i][:steals]
+      i += 1
+      end
+    
+  end 
+        thieves
+        steals
+        most_steals = steals.sort[-1]
+        the_thief = thieves[steals.index(most_steals)]
+       return the_thief == player_with_longest_name
+end
+
 
 
 
