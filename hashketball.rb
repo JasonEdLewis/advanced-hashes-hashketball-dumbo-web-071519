@@ -242,6 +242,31 @@ def big_shoe_rebounds
         rebounds_of_shoes[shoe_sizes.index(biggest_size)]
           
  end
+ 
+ def most_points_scored
+
+ ballers = []
+ points_of_ballers = []
+ game_hash.each_key do |key|
+
+      i = 0
+      home_and_away_teams = game_hash[key]
+      players = home_and_away_teams[:players]
+      
+      while i < players.length
+       ballers << players[i][:player_name]
+
+      points_of_ballers << players[i][:points]
+      i += 1
+      end
+    
+  end 
+        ballers
+        points_of_ballers
+        most_points = points_of_ballers.sort[-1]
+        ballers[points_of_ballers.index(most_points)]
+          
+ end
 
 
 
