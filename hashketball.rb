@@ -1,4 +1,4 @@
-# Write your code here!
+require "pry"
 def game_hash
   {
     home: { team_name: 'Brooklyn Nets',
@@ -103,6 +103,145 @@ def game_hash
   }
             
 end
+
+def num_points_scored(player)
+  players = game_hash[:home][:players]
+
+
+
+  players.each do |bball|
+    if bball[:player_name] == player
+      puts player[:points]
+      end
+
+  end
+end
+
+def num_points_scored(player)
+  player = player.downcase
+  
+    game_hash.each do |key, val|
+    i = 0
+    while i < val[:players].length
+      baller_name = val[:players][i][:player_name]
+      points_baller = val[:players][i][:points]
+          if baller_name.downcase == player.downcase
+              return points_baller
+          end
+         i += 1
+      end
+    end
+end
           
+def shoe_size(player)
+  
+   player = player.downcase
+  
+    game_hash.each do |key, val|
+    i = 0
+    while i < val[:players].length
+      baller_name = val[:players][i][:player_name]
+      shoe_baller = val[:players][i][:shoe]
+          if baller_name.downcase == player.downcase
+              return shoe_baller
+          end
+         i += 1
+      end
+    end
+  
+end
+
+def team_colors(team)
+      req_team = team
+  game_hash.each_value do |info|
+      if info[:team_name] == req_team
+         return info[:colors]
+      end
+  end
+end
+
+def team_names
+  the_teams = []
+  for items in game_hash
+  
+  end
+  
+end
+
+def team_names
+the_teams = []
+  game_hash.each_value do |info|
+      the_teams << info[:team_name]
+  end
+   the_teams 
+end
+
+ def player_numbers(team)
+ game_hash.each_key do |key|
+
+  home_and_away_teams = game_hash[key]
+  teams_names = home_and_away_teams[:team_name]
+  players = home_and_away_teams[:players]
+  jersey_numbers = []
+
+  if teams_names.downcase == team.downcase
+      i = 0
+      
+      while i < players.length
+      players_nums = players[i][:number]
+      jersey_numbers << players_nums
+      i +=1
+      end
+     return jersey_numbers
+  end
+ 
+  end
+
+     
+end
+
+def player_stats(player)
+stats_of_player = {}
+
+  game_hash.each_value do |val|
+      i = 0
+        while i < val[:players].length 
+        if val[:players][i][:player_name].downcase == player.downcase
+          stats_of_player[:stat] = val[:players][i].reject!{|x| x == :player_name}
           
+        end
+  
+    i += 1
+    end
+  end
+
+  stats_of_player[:stat]
+
+end
+
+def big_shoe_rebounds
+
+ shoe_sizes = []
+ rebounds_of_shoes = []
+ game_hash.each_key do |key|
+
+      i = 0
+      home_and_away_teams = game_hash[key]
+      players = home_and_away_teams[:players]
+      
+      while i < players.length
+      shoe_sizes << players[i][:shoe]
+
+      rebounds_of_shoes << players[i][:rebounds]
+      i += 1
+      end
+    
+  end 
+        shoe_sizes
+        biggest_size = shoe_sizes.sort[-1]
+        rebounds_of_shoes[shoe_sizes.index(biggest_size)]
           
+ end
+
+
+
